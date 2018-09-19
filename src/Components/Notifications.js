@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
+import NotificationBadge from 'react-notification-badge';
+import {Effect} from 'react-notification-badge';
 import BonusNotify from './BonusNotify';
 import TextNotify from './TextNotify';
 import PromotionNotify from './PromotionNotify';
@@ -34,7 +36,7 @@ class Notifications extends Component {
         id: 5236,    
         type: 'text',    
         title: 'Test notification',    
-        text: 'Test text notification',    
+        text: 'Test of text notification',    
         expires: 5    
         }  
         ]
@@ -53,44 +55,28 @@ class Notifications extends Component {
       switch (type) {
         case 'info':
           NotificationManager.info(bonusContent, '', 3600);
-          // eslint-disable-next-line
-          //break;
+ 
           case 'success':
           NotificationManager.info(textContent, '', 3600);
-          // eslint-disable-next-line
-          //break;
+
           case 'warning':
           NotificationManager.info(promotionContent, '', 5000000);
-          //break;
-        /*case 'success':
-          NotificationManager.success(successContent, '', 3600);
-          break;
-        case 'warning':
-          NotificationManager.warning('Warning message', 'Close after 3000ms', 3000);
-          break;
-        case 'error':
-          NotificationManager.error('Error message', 'Click me!', 5000, () => {
-            alert('callback');
-          });
-          break;*/
+
       }
     };
   };
   
+  
   render() {
-    const membersToRender = this.state.notifications.filter(notification => notification.display)
+    
+    const membersToRender = this.state.notifications.filter(a => a.id)
     const numRows = membersToRender.length
     return (
+      
       <div>
         <div className="btn-container">
         <div className="circle">
-        <p className="number">{numRows}</p>
-        {
-          membersToRender.map((notification, index) => {
-            console.log(index, notification)
-            //return <p key={index}>{ notification.type }</p>
-          })
-        }
+        <p className="number"><NotificationBadge count={document.querySelectorAll('div').length} effect={Effect.SCALE}/></p>
         </div>
         <div className='btn' onClick={this.createNotification('info')}>
         </div>
@@ -103,7 +89,6 @@ class Notifications extends Component {
     );
   }
 }
-
-
+ 
  
 export default Notifications;

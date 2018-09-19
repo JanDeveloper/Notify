@@ -6,8 +6,10 @@ class PromotionContent extends Component {
         return(
             <div>
             <h3>{this.props.notification.title}</h3>
-            <p>{this.props.notification.link}</p>
-            <div className="img"><img src={this.props.notification.image} alt="promo" className="size"/></div>
+            <a href={this.props.notification.link}>Click here</a>
+            <div className="img">
+            <a href={this.props.notification.link}><img src={this.props.notification.image} alt="promo" className="size"/></a>
+            </div>
             <hr />
             </div>
         )

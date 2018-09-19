@@ -6,7 +6,7 @@ class TextNotify extends Component {
     render(){
         let notifyItems;
         if(this.props.notifications){
-            notifyItems = this.props.notifications.filter(a => a.type === 'text').map(notification => {
+            notifyItems = this.props.notifications.slice(1).filter(a => a.type === 'text').map(notification => {
                 return (
                     <TextContent key={notification.id} notification={notification} />
                 );

@@ -6,7 +6,7 @@ class BonusNotify extends Component {
     render(){
         let notifyItems;
         if(this.props.notifications){
-            notifyItems = this.props.notifications.filter(a => a.type === 'bonus').map(notification => {
+            notifyItems = this.props.notifications.slice(1).filter(a => a.type === 'bonus').map(notification => {
                 return (
                     <BonusContent key={notification.id} notification={notification} />
                 );
