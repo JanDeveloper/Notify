@@ -1,0 +1,70 @@
+
+html{
+    background: rgb(210, 234, 250)
+}
+body .notification-info{
+        background: white;
+        color: black;
+        margin-top: 0;
+        box-shadow: 0 0;
+    }
+
+body .notification-info::before{
+    display: none;
+}
+body .notification-container{
+    position: relative;
+    margin: auto;
+    padding: 0px;
+    box-shadow: 1px 1px 2px 2px rgb(189, 188, 188); 
+}
+.btn{
+    margin-left: 238px;
+    background-image: url(images/bell.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 40px;
+    height: 40px;
+    margin-top: 50px;
+    border-radius: 5px;
+}
+.circle{
+    position: relative;
+    margin-bottom: -60px;
+    padding: 0;
+    height: 22px;
+    width: 22px;
+    background-image: url(images/redcircle.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-left: 260px;
+    z-index: 5px;
+}
+.btn-container{
+    margin: auto;
+    position: relative;
+    width: 320px;
+    height: 60px;
+    margin-top: 50px;
+
+}
+.size{
+    height: 70px;
+    width: 100px;
+}
+.top{
+    margin: auto;
+    position: relative;
+    background-image: url(images/notify.png);
+    color: white;
+    width: 323px;
+    height: 80px;
+}
+.top p{
+    padding: 30px 25px;
+    position: absolute;
+}
+.number{
+    text-align: center;
+    padding-top: 3px;
+}
