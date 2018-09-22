@@ -1,15 +1,11 @@
-import React, { Component } from 'react';
-//import PropTypes from 'prop-types';
+import React from 'react';
+const BonusContent = (props)=> {
 
-class BonusContent extends Component {
-    render(){
-        return(
-            <div>
-            <h3>{this.props.notification.title}</h3>
-            <p>{this.props.notification.requirement}</p> 
-            <hr />
-            </div>
-        )
-    }
+    return(
+        <div className="bonus">
+        <h3>{props.title}</h3>
+        <p>{props.requirement}</p>
+        </div>
+    )
 }
 export default BonusContent

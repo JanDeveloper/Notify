@@ -2,24 +2,18 @@
 html{
     background: rgb(210, 234, 250)
 }
-body .notification-info{
-        background: white;
-        color: black;
-        margin-top: 0;
-        box-shadow: 0 0;
-    }
 
-body .notification-info::before{
-    display: none;
-}
-body .notification-container{
+.container{
     position: relative;
     margin: auto;
-    padding: 0px;
+    padding-top: 10px;
     box-shadow: 1px 1px 2px 2px rgb(189, 188, 188); 
+    width: 397px;
+    background: white;
+    margin-bottom: 20px;
 }
 .btn{
-    margin-left: 238px;
+    margin-left: 263px;
     background-image: url(images/bell.png);
     background-repeat: no-repeat;
     background-size: contain;
@@ -37,7 +31,7 @@ body .notification-container{
     background-image: url(images/redcircle.png);
     background-repeat: no-repeat;
     background-size: contain;
-    margin-left: 260px;
+    margin-left: 285px;
     z-index: 5px;
 }
 .btn-container{
@@ -48,23 +42,36 @@ body .notification-container{
     margin-top: 50px;
 
 }
-.size{
-    height: 70px;
-    width: 100px;
-}
 .top{
     margin: auto;
     position: relative;
     background-image: url(images/notify.png);
+    background-repeat: no-repeat;
+    background-size: cover;
     color: white;
-    width: 323px;
-    height: 80px;
+    width: 400px;
+    height: 90px;
 }
 .top p{
-    padding: 30px 25px;
+    padding: 35px 30px;
     position: absolute;
 }
 .number{
     text-align: center;
     padding-top: 3px;
+}
+.img{
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+hr {
+    width: 85%;
+    bottom: -5px;
+} 
+.content p, h3, .img {
+    padding-left: 60px;
+}
+.content:last-child hr{
+    display: none;
 }

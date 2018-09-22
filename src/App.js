@@ -6,9 +6,8 @@ import 'react-notifications/lib/notifications.css';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="main">
       <Notifications />
-      
       </div>
     );
   }

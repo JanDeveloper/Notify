@@ -1,94 +1,91 @@
 import React, { Component } from 'react';
-import {NotificationContainer, NotificationManager} from 'react-notifications';
-import NotificationBadge from 'react-notification-badge';
-import {Effect} from 'react-notification-badge';
-import BonusNotify from './BonusNotify';
-import TextNotify from './TextNotify';
-import PromotionNotify from './PromotionNotify';
+import BonusContent from './BonusContent';
+import TextContent from './TextContent';
+import PromotionContent from './PromotionContent';
 
 class Notifications extends Component {
-  constructor(){
-    super();
-    this.state = {
-      notifications: [
-        {  
-        id: 1321,    
-        type: 'text',    
-        title: 'Test notification',    
-        text: 'Test text notification',    
-        expires: 3600    
-        },  
-        {  
-        id: 4322,    
-        type: 'bonus',    
-        title: 'You win a bonus!',    
-        requirement: 'Deposit $50 to win',    
-        expires: 3600    
-        },  
-        {  
-        id: 5453,    
-        type: 'Promotion',    
-        image: 'http://www.absolat.com/images/promotion-in-marketing.jpg',
-        title: '%30 off on sports betting',    
-        link: 'https://www.google.com/',
-        },  
-        {  
-        id: 5236,    
-        type: 'text',    
-        title: 'Test notification',    
-        text: 'Test of text notification',    
-        expires: 5    
-        }  
-        ]
-        
+ 
+  state = {
+    promotionNotifications: [{  
+      id: 5453,    
+      type: 'Promotion',    
+      image: 'http://www.absolat.com/images/promotion-in-marketing.jpg',
+      title: '%30 off on sports betting',    
+      link: 'https://www.google.com/',
+      }], 
+    bonusNotifications: [{  
+      id: 4322,    
+      type: 'bonus',    
+      title: 'You win a bonus!',    
+      requirement: 'Deposit $50 to win',    
+      expires: 3600    
+      }],  
+    textNotifications: [
+      {  
+      id: 1321,    
+      type: 'text',    
+      title: 'Test notification',    
+      text: 'Test text notification',    
+      expires: 3600    
+      },    
+      {  
+      id: 5236,    
+      type: 'text',    
+      title: 'Test notification',    
+      text: 'Test of text notification',    
+      expires: 5    
+      }  
+      ],
+    displayNotification: false,
+    isToggleOn: true
     }
+
+  displayNotification = () => {
+    this.setState({
+        displayNotification: !this.state.displayNotification, 
+        isToggleOn: !this.state.isToggleOn
+    })
   }
-  createNotification = (type) => {
-  let bonusContent = (<BonusNotify notifications={this.state.notifications} />);
-  let textContent = (<TextNotify notifications={this.state.notifications} />);
-  let promotionContent = (<PromotionNotify notifications={this.state.notifications} />);
-
-    
-    return (
-
-    ) => {
-      switch (type) {
-        case 'info':
-          NotificationManager.info(bonusContent, '', 3600);
  
-          case 'success':
-          NotificationManager.info(textContent, '', 3600);
 
-          case 'warning':
-          NotificationManager.info(promotionContent, '', 5000000);
-
-      }
-    };
-  };
-  
-  
   render() {
-    
-    const membersToRender = this.state.notifications.filter(a => a.id)
-    const numRows = membersToRender.length
+      let textCounter = this.state.textNotifications.length;
+      let promotionCounter = this.state.promotionNotifications.length;
+      let Counter = textCounter + promotionCounter;
     return (
-      
-      <div>
-        <div className="btn-container">
-        <div className="circle">
-        <p className="number"><NotificationBadge count={document.querySelectorAll('div').length} effect={Effect.SCALE}/></p>
-        </div>
-        <div className='btn' onClick={this.createNotification('info')}>
-        </div>
-        </div>
-       <div className="top">
-       <p>NOTIFICATIONS</p>
-       </div>
-        <NotificationContainer />
-      </div>
-    );
-  }
+    <span className="overview">
+         <div className="btn-container"> <div className="circle"><p className="number">{this.state.isToggleOn ? '0' : Counter}</p></div>
+<div className="btn" onClick={this.displayNotification} ></div></div>
+<div className="top"><p>NOTIFICATIONS</p></div>
+{
+this.state.displayNotification &&
+
+ <div  className="container">
+      { this.state.textNotifications.map((notification) => {
+           return(
+             <div className="content" key={notification.id}>
+           <div><TextContent  title={notification.title} text={notification.text} /></div><hr />
+          </div>
+           );
+          })}
+           { this.state.bonusNotifications.map((notification) => {
+           return(
+             <div className="content" key={notification.id}>
+           <div><BonusContent  title={notification.title} requirement={notification.requirement} /></div><hr />
+          </div>
+           );
+          })}
+          { this.state.promotionNotifications.map((notification) => {
+           return(
+             <div className="content" key={notification.id}>
+           <div><PromotionContent  title={notification.title} link={notification.link} image={notification.image}/></div><hr />
+          </div>
+           );
+          })}
+ </div>
 }
- 
- 
+</span>
+     ) }
+    }
+    
 export default Notifications;

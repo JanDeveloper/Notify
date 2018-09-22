@@ -3,8 +3,9 @@ import TextContent from './TextContent';
 import PropTypes from 'prop-types';
 
 class TextNotify extends Component {
+    
     render(){
-        let notifyItems;
+        let notifyItems= null;
         if(this.props.notifications){
             notifyItems = this.props.notifications.slice(1).filter(a => a.type === 'text').map(notification => {
                 return (
