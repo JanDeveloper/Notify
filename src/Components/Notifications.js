@@ -3,24 +3,32 @@ import BonusContent from './BonusContent';
 import TextContent from './TextContent';
 import PromotionContent from './PromotionContent';
 
+
 class Notifications extends Component {
  
   state = {
-    promotionNotifications: [{  
+    promotionNotifications: 
+    [
+      {  
       id: 5453,    
       type: 'Promotion',    
       image: 'http://www.absolat.com/images/promotion-in-marketing.jpg',
       title: '%30 off on sports betting',    
       link: 'https://www.google.com/',
-      }], 
-    bonusNotifications: [{  
+      }
+    ], 
+    bonusNotifications: 
+    [
+      {  
       id: 4322,    
       type: 'bonus',    
       title: 'You win a bonus!',    
       requirement: 'Deposit $50 to win',    
       expires: 3600    
-      }],  
-    textNotifications: [
+      }
+    ],  
+    textNotifications: 
+    [
       {  
       id: 1321,    
       type: 'text',    
@@ -35,15 +43,15 @@ class Notifications extends Component {
       text: 'Test of text notification',    
       expires: 5    
       }  
-      ],
+    ],
     displayNotification: false,
-    isToggleOn: true
+    isToggleOn: true,
     }
-
-  displayNotification = () => {
+    
+  displayNotification = (e) => {
     this.setState({
         displayNotification: !this.state.displayNotification, 
-        isToggleOn: !this.state.isToggleOn
+        isToggleOn: !this.state.isToggleOn,
     })
   }
  
@@ -56,14 +64,15 @@ class Notifications extends Component {
     <span className="overview">
          <div className="btn-container"> <div className="circle"><p className="number">{this.state.isToggleOn ? '0' : Counter}</p></div>
 <div className="btn" onClick={this.displayNotification} ></div></div>
-<div className="top"><p>NOTIFICATIONS</p></div>
 {
 this.state.displayNotification &&
 
  <div  className="container">
+ <div className="top"><p>NOTIFICATIONS</p></div>
+
       { this.state.textNotifications.map((notification) => {
            return(
-             <div className="content" key={notification.id}>
+             <div className="content" key={notification.id} >
            <div><TextContent  title={notification.title} text={notification.text} /></div><hr />
           </div>
            );

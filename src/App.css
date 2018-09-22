@@ -6,11 +6,27 @@ html{
 .container{
     position: relative;
     margin: auto;
-    padding-top: 10px;
+    padding-top: 70px;
+    margin-top: 30px;
+    padding-bottom: 5px;
     box-shadow: 1px 1px 2px 2px rgb(189, 188, 188); 
     width: 397px;
     background: white;
     margin-bottom: 20px;
+    -webkit-animation: mymove 2s;  /* Safari 4.0 - 8.0 */
+    -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
+    animation: mymove 2s;
+    animation-fill-mode: forwards;
+
+}
+@-webkit-keyframes mymove {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes mymove {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
 .btn{
     margin-left: 263px;
@@ -44,24 +60,40 @@ html{
 }
 .top{
     margin: auto;
-    position: relative;
+    margin-top: -110px;
+    position: absolute;
     background-image: url(images/notify.png);
     background-repeat: no-repeat;
     background-size: cover;
     color: white;
-    width: 400px;
-    height: 90px;
+    width: 397px;
+    height: 100px;
+    -webkit-animation: mymove 1s;  /* Safari 4.0 - 8.0 */
+    -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
+    animation: mymove 1s;
+    animation-fill-mode: forwards;
+
+}
+@-webkit-keyframes mymove {
+    from {opacity: 0; background: rgb(177, 177, 235)}
+    to {opacity: 1;}
+}
+
+@keyframes mymove {
+    from {opacity: 0; background: rgb(177, 177, 235)}
+    to {opacity: 1;}
 }
 .top p{
-    padding: 35px 30px;
+    padding: 40px 30px;
     position: absolute;
+    font-size: 20px;
 }
 .number{
     text-align: center;
     padding-top: 3px;
 }
 .img{
-    width: 50px;
+    width: 70px;
     height: 50px;
     position: relative;
 }
