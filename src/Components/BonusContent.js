@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 let timerid;
 
@@ -10,7 +10,7 @@ class BonusContent extends Component {
     };
 
     componentDidMount() {
-        this.setState({timerid: this.getSessionTimeout()});
+        this.setState({ timerid: this.getSessionTimeout() });
     }
 
     componentWillUnmount() {
@@ -22,7 +22,7 @@ class BonusContent extends Component {
             clearTimeout(this.state.timerid);
         }
         timerid = setTimeout(() => {
-            this.setState({sessionEnd: true});
+            this.setState({ sessionEnd: true });
         }, this.props.expires);
         return timerid;
     }
@@ -36,7 +36,7 @@ class BonusContent extends Component {
             <div className="bonus" key={this.props.id}>
                 <h3>{this.props.title}</h3>
                 <p>{this.props.requirement}</p>
-                <hr/>
+                <hr />
             </div>
         );
     }

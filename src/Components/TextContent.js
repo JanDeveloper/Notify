@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-
+import React, { Component } from 'react';
 
 let timerid;
 
@@ -11,7 +10,7 @@ class TextContent extends Component {
     }
 
     componentDidMount() {
-        this.setState({timerid: this.getSessionTimeout()});
+        this.setState({ timerid: this.getSessionTimeout() });
     }
 
     componentWillUnmount() {
@@ -23,7 +22,7 @@ class TextContent extends Component {
             clearTimeout(this.state.timerid);
         }
         timerid = setTimeout(() => {
-            this.setState({sessionEnd: true});
+            this.setState({ sessionEnd: true });
         }, this.props.expires);
         return timerid;
     }
@@ -36,7 +35,7 @@ class TextContent extends Component {
             <div className="text" key={this.props.id}>
                 <h3>{this.props.title}</h3>
                 <p>{this.props.text}</p>
-                <hr/>
+                <hr />
             </div>
         );
     }
