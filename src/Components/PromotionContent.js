@@ -1,12 +1,14 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-const PromotionContent = (props)=> {
+class PromotionContent extends Component {
 
-    return(
-        <div className="promotion">
-        <h3>{props.title}</h3>
-        <a href={props.link}><img className="img" src={props.image} alt="promo"/></a>
+    render(){
+        return(
+        <div className="promotion" key={this.props.id}>
+            <h3>{this.props.title}</h3>
+            <a href={this.props.link}><img className="img" src={this.props.image} alt="promo"/></a><hr />
         </div>
-    )
+        )
+    }
 }
 export default PromotionContent

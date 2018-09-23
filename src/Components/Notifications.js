@@ -14,7 +14,7 @@ class Notifications extends Component {
       type: 'Promotion',    
       image: 'http://www.absolat.com/images/promotion-in-marketing.jpg',
       title: '%30 off on sports betting',    
-      link: 'https://www.google.com/',
+      link: 'https://www.google.com/'
       }
     ], 
     bonusNotifications: 
@@ -41,7 +41,7 @@ class Notifications extends Component {
       type: 'text',    
       title: 'Test notification',    
       text: 'Test of text notification',    
-      expires: 5    
+      expires: 1000    
       }  
     ],
     displayNotification: false,
@@ -72,22 +72,24 @@ this.state.displayNotification &&
 
       { this.state.textNotifications.map((notification) => {
            return(
+            
              <div className="content" key={notification.id} >
-           <div><TextContent  title={notification.title} text={notification.text} /></div><hr />
+           <div><TextContent  title={notification.title} text={notification.text} expires={notification.expires} /></div>
           </div>
+         
            );
           })}
            { this.state.bonusNotifications.map((notification) => {
            return(
              <div className="content" key={notification.id}>
-           <div><BonusContent  title={notification.title} requirement={notification.requirement} /></div><hr />
+           <div><BonusContent  title={notification.title} requirement={notification.requirement} expires={notification.expires} /></div>
           </div>
            );
           })}
           { this.state.promotionNotifications.map((notification) => {
            return(
              <div className="content" key={notification.id}>
-           <div><PromotionContent  title={notification.title} link={notification.link} image={notification.image}/></div><hr />
+           <div><PromotionContent  title={notification.title} link={notification.link} image={notification.image}  /></div>
           </div>
            );
           })}

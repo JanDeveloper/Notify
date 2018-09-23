@@ -1,16 +1,49 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-const TextContent = (props)=> {
-    
-        return(
-        <div className="content">
-            <div className="text">
-            <h3>{props.title}</h3>
-            <p>{props.text}</p>
+
+let timerid;
+class TextContent extends Component  {
+
+   state = {
+        timerid: -1,
+        sessionEnd: false, 
+  }
+
+  componentDidMount()
+  {
+    this.setState({ timerid: this.getSessionTimeout() });
+  }
+
+  componentWillUnmount()
+  {
+    clearTimeout(this.state.timerid);
+  }
+
+  getSessionTimeout()
+  {
+      if (this.state.timerid)
+      {
+          clearTimeout(this.state.timerid);
+      }
+      timerid = setTimeout(() =>
+      {
+          this.setState({sessionEnd : true});
+      }, this.props.expires);
+      return timerid;
+  }
+
+  render(){
+    if(this.state.sessionEnd)
+    {
+      return (null);
+    }
+    return (
+            <div className="text" key={this.props.id}>
+                <h3>{this.props.title}</h3>
+                <p>{this.props.text}</p><hr />
             </div>
-        </div>
-     )
-    
-    }   
-    
-export default TextContent
+    );
+   }
+}
+
+export default TextContent;
