@@ -29,7 +29,7 @@ class BonusContent extends Component {
 
     render() {
         if (this.state.sessionEnd) {
-            return (null);
+            this.props.callback(this.props.id, this.props.type);
         }
         return (
 

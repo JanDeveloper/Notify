@@ -30,7 +30,7 @@ class TextContent extends Component {
 
     render() {
         if (this.state.sessionEnd) {
-            this.props.callback(this.props.id);
+            this.props.callback(this.props.id, this.props.type);
         }
         return (
             <div className="text" key={this.props.id}>

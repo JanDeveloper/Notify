@@ -4,6 +4,11 @@ import TextContent from './TextContent';
 import PromotionContent from './PromotionContent';
 
 class Notifications extends Component {
+    constructor(props) {
+        super(props);
+        this.removeNotification = this.removeNotification.bind(this);
+    }
+
     state = {
         promotionNotifications:
             [
@@ -53,11 +58,11 @@ class Notifications extends Component {
         })
     };
 
-    removeNotification = (id) => {
-        const textNotifications = [...this.state.textNotifications];
-        const index = this.state.textNotifications.findIndex(x => x.id === id);
-        textNotifications.splice(index, 1);
-        this.setState({textNotifications});
+    removeNotification = (id, type) => {
+        const notification = [...this.state[type]];
+        const index = this.state[type].findIndex(x => x.id === id);
+        notification.splice(index, 1);
+        this.setState({[type]: notification});
     };
 
 
@@ -89,6 +94,7 @@ class Notifications extends Component {
                                         text={notification.text}
                                         expires={notification.expires}
                                         id={notification.id}
+                                        type="textNotifications"
                                         callback={this.removeNotification}
                                     />
                                 </div>
@@ -101,6 +107,9 @@ class Notifications extends Component {
                                         title={notification.title}
                                         requirement={notification.requirement}
                                         expires={notification.expires}
+                                        id={notification.id}
+                                        type="bonusNotifications"
+                                        callback={this.removeNotification}
                                     />
                                 </div>
                             );
