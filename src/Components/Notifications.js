@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import BonusContent from './BonusContent';
 import TextContent from './TextContent';
 import PromotionContent from './PromotionContent';
+import { CSSTransitionGroup } from 'react-transition-group'
 
 class Notifications extends Component {
   constructor(props) {
@@ -64,7 +65,7 @@ class Notifications extends Component {
     notification.splice(index, 1);
     this.setState({ [type]: notification });
   };
-  
+
   render() {
     let textCounter = this.state.textNotifications.length;
     let promotionCounter = this.state.promotionNotifications.length;
@@ -77,55 +78,63 @@ class Notifications extends Component {
           </div>
           <div className="btn" onClick={this.displayNotification} />
         </div>
-        
+
         {
           this.state.displayNotification &&
+          <CSSTransitionGroup
+            transitionName="container"
+            transitionAppear={true}
+            transitionAppearTimeout={500}
+            transitionEnter={false}
+            transitionLeave={false}>
+            <div className="container">
+              <div className="top">
+                <p>NOTIFICATIONS</p>
+              </div>
 
-          <div className="container">
-            <div className="top">
-              <p>NOTIFICATIONS</p>
+              {this.state.textNotifications.map((notification) => {
+                return (
+
+                  <div className="content" key={notification.id}>
+                    <TextContent
+                      title={notification.title}
+                      text={notification.text}
+                      expires={notification.expires}
+                      id={notification.id}
+                      type="textNotifications"
+                      callback={this.removeNotification}
+                    />
+                  </div>
+                );
+              })}
+              {this.state.bonusNotifications.map((notification) => {
+                return (
+                  <div className="content" key={notification.id}>
+                    <BonusContent
+                      title={notification.title}
+                      requirement={notification.requirement}
+                      expires={notification.expires}
+                      id={notification.id}
+                      type="bonusNotifications"
+                      callback={this.removeNotification}
+                    />
+                  </div>
+                );
+              })}
+              {this.state.promotionNotifications.map((notification) => {
+                return (
+                  <div className="content" key={notification.id}>
+                    <PromotionContent
+                      title={notification.title}
+                      link={notification.link}
+                      image={notification.image}
+                    />
+                  </div>
+                );
+              })}
             </div>
+          </CSSTransitionGroup>
 
-            {this.state.textNotifications.map((notification) => {
-              return (
-                <div className="content" key={notification.id}>
-                  <TextContent
-                    title={notification.title}
-                    text={notification.text}
-                    expires={notification.expires}
-                    id={notification.id}
-                    type="textNotifications"
-                    callback={this.removeNotification}
-                  />
-                </div>
-              );
-            })}
-            {this.state.bonusNotifications.map((notification) => {
-              return (
-                <div className="content" key={notification.id}>
-                  <BonusContent
-                    title={notification.title}
-                    requirement={notification.requirement}
-                    expires={notification.expires}
-                    id={notification.id}
-                    type="bonusNotifications"
-                    callback={this.removeNotification}
-                  />
-                </div>
-              );
-            })}
-            {this.state.promotionNotifications.map((notification) => {
-              return (
-                <div className="content" key={notification.id}>
-                  <PromotionContent
-                    title={notification.title}
-                    link={notification.link}
-                    image={notification.image}
-                  />
-                </div>
-              );
-            })}
-          </div>
         }
       </div>
     )

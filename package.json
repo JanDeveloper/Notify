@@ -5,13 +5,14 @@
   "repository": {
     "type": "gitlab",
     "url": "https://github.com/JanDeveloper/Notify"
-},
-"author": "Jan Sojak",
-"license": "MIT",
+  },
+  "author": "Jan Sojak",
+  "license": "MIT",
   "dependencies": {
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
-    "react-scripts": "1.1.5"
+    "react-scripts": "1.1.5",
+    "react-transition-group": "^1.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
