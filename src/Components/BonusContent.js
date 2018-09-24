@@ -32,7 +32,6 @@ class BonusContent extends Component {
             this.props.callback(this.props.id, this.props.type);
         }
         return (
-
             <div className="bonus" key={this.props.id}>
                 <h3>{this.props.title}</h3>
                 <p>{this.props.requirement}</p>

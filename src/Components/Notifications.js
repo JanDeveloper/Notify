@@ -5,11 +5,7 @@ import PromotionContent from './PromotionContent';
 import { CSSTransitionGroup } from 'react-transition-group'
 
 class Notifications extends Component {
-  constructor(props) {
-    super(props);
-    this.removeNotification = this.removeNotification.bind(this);
-  }
-
+ 
   state = {
     promotionNotifications:
       [
